@@ -14,5 +14,11 @@
 		"typescript": "^5.5.2",
 		"vitest": "~3.2.0",
 		"wrangler": "^4.42.2"
+	},
+	"dependencies": {
+		"@cloudflare/ai": "^1.2.2",
+		"@cloudflare/workers-types": "^4.20251011.0",
+		"base64-js": "^1.5.1",
+		"mustache": "^4.2.0"
 	}
 }
