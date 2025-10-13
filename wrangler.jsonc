@@ -13,7 +13,13 @@
 		{
 			"binding": "IP_REPUTATION",
 			"id": "040f548aa3044b7389b11b934d0ea1ce",
-			"remote": true
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "threat-dashboard-db",
+			"database_id": "e81c5060-b15a-475c-9b6a-f735d4559e41",
 		}
 	]
 }
