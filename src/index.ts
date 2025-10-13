@@ -21,7 +21,7 @@ export default {
     if (request.method === 'GET' && url.pathname === '/analytics') {
       try {
         const stmt = env.DB.prepare(
-          "SELECT ip, country, payload_snippet, timestamp FROM threats ORDER BY timestamp DESC LIMIT 20"
+          "SELECT id, ip, country, payload_snippet, timestamp FROM threats ORDER BY timestamp DESC LIMIT 20"
         );
         const { results } = await stmt.all();
         return new Response(JSON.stringify(results), {
