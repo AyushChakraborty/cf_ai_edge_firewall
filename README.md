@@ -89,7 +89,6 @@ For local development, you will need two terminal windows to run the backend and
 
 * Clone & Install Dependencies
 git clone [https://github.com/AyushChakraborty/ai_edge_firewall](https://github.com/AyushChakraborty/ai_edge_firewall)
-cd AI-Edge-Firewall
 
 
 ## Install backend dependencies
@@ -114,7 +113,7 @@ Open frontend/index.html in your code editor.
 
 Find the ANALYTICS_ENDPOINT constant in the script tag
 
-Change the URL to your local worker address:
+Change the URL to your local worker address (assuming it runs in localhost:8787):
     ```typescript
     const ANALYTICS_ENDPOINT = 'http://localhost:8787/analytics';
     ```
@@ -123,7 +122,7 @@ Open the frontend/index.html file directly in your web browser. The dashboard wi
 
 ## Deployment
 
-This project requires a two-part deployment: one for the Worker (backend) and one for the Pages site (frontend).
+This project requires a two part deployment: one for the Worker (backend) and one for the Pages site (frontend).
 
 1. Deploy the Worker Backend
 First, ensure your production D1 database has the correct schema.
@@ -139,22 +138,22 @@ npx wrangler deploy
     This will output your production Worker URL. Copy this URL.
 
 4. Deploy the Frontend
-The frontend is deployed to Cloudflare Pages and connected to the live Worker via a proxy rule.
+	The frontend is deployed to Cloudflare Pages and connected to the live Worker via a proxy rule.
 
-Commit and push all your changes to your GitHub repository.
-
-Connect to Cloudflare Pages:
-
-In the Cloudflare dashboard, go to Workers & Pages -> Create application -> Pages -> Connect to Git.
-
-Select your repository.
-
-On the "Set up builds and deployments" screen, use the following configuration:
-
-Framework preset: None
-
-Build command: (leave blank)
-
-Build output directory: frontend
-
-Click Save and Deploy.
+	Commit and push all your changes to your GitHub repository.
+	
+	Connect to Cloudflare Pages:
+	
+	In the Cloudflare dashboard, go to Workers & Pages -> Create application -> Pages -> Connect to Git.
+	
+	Select your repository.
+	
+	On the "Set up builds and deployments" screen, use the following configuration:
+	
+	Framework preset: None
+	
+	Build command: (leave blank)
+	
+	Build output directory: frontend
+	
+	Click Save and Deploy.
