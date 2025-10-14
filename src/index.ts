@@ -7,7 +7,6 @@ export interface Env {
   DB: D1Database;
 }
 
-// --- Configuration ---
 const STRIKE_THRESHOLD = 3; 
 const STRIKE_TTL_SECONDS = 600; 
 const BLOCK_TTL_SECONDS = 3600;
