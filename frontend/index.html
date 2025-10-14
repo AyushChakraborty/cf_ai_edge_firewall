@@ -6,15 +6,16 @@
     <title>AI Edge Firewall - Live Threat Feed</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-background: #FFFFFF;
-            --color-foreground: #000000;
-            --color-muted: #666666;
-            --color-border: #E5E7EB;
-            --color-accent: #FF8800;
-            --font-sans: 'Inter', sans-serif;
+            --color-foreground: #1a1a1a;
+            --color-muted: #6b7280;
+            --color-border: #e5e7eb;
+            --color-accent: #f97316;
+            --color-status-connected: #22c55e;
+            --font-sans: 'Inter', system-ui, sans-serif;
             --font-mono: 'Fira Code', monospace;
         }
         body {
@@ -26,17 +27,17 @@
             background-image:
                 linear-gradient(to right, #f0f0f0 1px, transparent 1px),
                 linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
-            background-size: 2rem 2rem;
+            background-size: 2.5rem 2.5rem;
         }
         h1, h2 {
-            font-weight: 600;
+            font-weight: 700;
         }
         code {
             font-family: var(--font-mono);
             background-color: #f3f4f6;
             padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-size: 0.85em;
+            border-radius: 4px;
+            font-size: 0.875em;
         }
         .container {
             max-width: 1024px;
@@ -44,62 +45,113 @@
             padding: 0 1.5rem;
         }
         header {
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 2.5rem;
+        }
+        .header-main {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-logo {
+            width: 36px;
+            height: 36px;
+            color: var(--color-accent);
         }
         header h1 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            margin: 0;
         }
         header .accent {
             color: var(--color-accent);
-            font-weight: 400;
+            font-weight: 600;
         }
-        /* --- threat log --- */
+        /* New section for the endpoint text */
+        .endpoint-info {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: #f9fafb;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--color-muted);
+            text-align: center;
+        }
         .log-container {
             background-color: var(--color-background);
             border: 1px solid var(--color-border);
-            border-radius: 2px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         }
         .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--color-border);
             padding: 1rem 1.5rem;
         }
         .log-header h2 {
             font-size: 0.875rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--color-muted);
         }
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--color-muted);
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--color-muted);
+            transition: background-color 0.3s ease;
+        }
+        .status-indicator.connected {
+            background-color: var(--color-status-connected);
+        }
         .log-body {
             padding: 1.5rem;
-            max-height: calc(100vh - 250px);
+            max-height: calc(100vh - 350px);
             overflow-y: auto;
         }
         .log-entry {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 0.75rem;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 0.5rem 1.5rem;
+            padding: 1rem;
             border-left: 4px solid var(--color-border);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             animation: fadeIn 0.5s ease-in-out;
+            align-items: center;
+        }
+        .log-entry:last-child {
+            margin-bottom: 0;
         }
         .log-entry.highlight-threat {
             border-left-color: var(--color-accent);
-            background-color: rgba(255, 136, 0, 0.05);
+            background-color: rgba(249, 115, 22, 0.05);
+        }
+        .log-entry .timestamp {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--color-muted);
         }
         .log-meta {
             display: flex;
             align-items: center;
             font-size: 0.875rem;
-            color: var(--color-muted);
             flex-wrap: wrap;
+            gap: 1rem;
         }
-        .log-meta .timestamp { width: 70px; }
-        .log-meta .ip { font-weight: 600; color: var(--color-foreground); margin: 0 1rem; }
-        .log-meta .country { font-size: 0.8rem; border: 1px solid var(--color-border); padding: 0 0.5rem; border-radius: 3px; }
+        .log-meta .ip { font-weight: 600; color: var(--color-foreground); }
+        .log-meta .country { font-size: 0.8rem; border: 1px solid var(--color-border); padding: 0.1rem 0.5rem; border-radius: 4px; background: #f9fafb;}
         .log-payload {
+            grid-column: 2;
             word-break: break-all;
         }
         .placeholder {
@@ -107,7 +159,6 @@
             color: var(--color-muted);
             padding: 2rem 0;
         }
-        /* --- animation --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -118,14 +169,28 @@
 
     <header>
         <div class="container">
-            <h1>AI Edge Firewall // <span class="accent">Live Threat Feed</span></h1>
+            <div class="header-main">
+                <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>
+                <h1>AI Edge Firewall // <span class="accent">Live Threat Feed</span></h1>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <div class="log-container">
+        <!-- New, styled section for the endpoint text -->
+        <div class="endpoint-info">
+            Protecting an endpoint generated by Beeceptor
+        </div>
+
+        <div class="log-container" style="margin-top: 1.5rem;">
             <div class="log-header">
                 <h2>Live Threat Log</h2>
+                <div class="status">
+                    <span id="status-indicator" class="status-indicator"></span>
+                    <span id="status-text">Connecting...</span>
+                </div>
             </div>
             <div class="log-body" id="threat-log-container">
                 <p class="placeholder" id="placeholder">Waiting for threat data...</p>
@@ -134,25 +199,30 @@
     </main>
 
     <script>
-        const API_ENDPOINT = 'https://ai-edge-firewall.chakrabortyayush83.workers.dev/analytics'; 
+        const ANALYTICS_ENDPOINT = '/analytics';
 
         const logContainer = document.getElementById('threat-log-container');
         const placeholder = document.getElementById('placeholder');
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+        
         const displayedThreatIds = new Set();
 
         async function fetchThreats() {
             try {
-                const response = await fetch(API_ENDPOINT);
+                const response = await fetch(ANALYTICS_ENDPOINT);
                 if (!response.ok) {
                     throw new Error(`API request failed: ${response.statusText}`);
                 }
                 const threats = await response.json();
+                
+                statusIndicator.classList.add('connected');
+                statusText.textContent = 'Live';
 
                 if (placeholder && threats.length > 0) {
                     placeholder.style.display = 'none';
                 }
 
-                //process newest threats first by reversing the array.
                 threats.reverse().forEach(threat => {
                     if (!displayedThreatIds.has(threat.id)) {
                         displayedThreatIds.add(threat.id);
@@ -163,6 +233,8 @@
 
             } catch (error) {
                 console.error("Failed to fetch threats:", error);
+                statusIndicator.classList.remove('connected');
+                statusText.textContent = 'Disconnected';
                 if (placeholder) {
                     placeholder.textContent = "Error: Could not connect to API.";
                 }
@@ -172,19 +244,15 @@
         function createThreatElement(threat) {
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-
-            const isRepeated = threat.payload_snippet === 'REPEATED_BLOCKED_ATTEMPT';
-            if (isRepeated) {
+            if (threat.payload_snippet === 'REPEATED_BLOCKED_ATTEMPT') {
                 entry.classList.add('highlight-threat');
             }
-
             const formattedTimestamp = new Date(threat.timestamp).toLocaleTimeString([], {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
             });
-
             entry.innerHTML = `
+                <div class="timestamp">${formattedTimestamp}</div>
                 <div class="log-meta">
-                    <span class="timestamp">${formattedTimestamp}</span>
                     <span class="ip">${escapeHtml(threat.ip)}</span>
                     <span class="country">${escapeHtml(threat.country)}</span>
                 </div>
@@ -197,17 +265,13 @@
 
         function escapeHtml(unsafe) {
             if (typeof unsafe !== 'string') return '';
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+            return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
-
+        
         setInterval(fetchThreats, 5000);
-        fetchThreats(); // Initial call
+        fetchThreats();
 
     </script>
 </body>
 </html>
+

@@ -78,7 +78,7 @@ export default {
     if ('response' in aiResponse && aiResponse.response) {
       const isMalicious = aiResponse.response.toLowerCase().includes('true');
 
-      if (isMalicious && ip) {
+      if (isMalicious && ip) { 
         const currentStrikesStr = await env.IP_REPUTATION.get(ip);
         const currentStrikes = currentStrikesStr ? parseInt(currentStrikesStr, 10) : 0;
         const newStrikes = currentStrikes + 1;
