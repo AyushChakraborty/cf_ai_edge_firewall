@@ -6,8 +6,7 @@ The demo is the dashboard for the interceptor
 
 Live Demo: [ai-edge-firewall-dashboard.pages.dev](ai-edge-firewall-dashboard.pages.dev)
 
-(Action Required: Take a screenshot of your live dashboard and replace the placeholder URL above)
-
+![alt text](image-1.png)
 ## Core Concept
 
 Traditional firewalls are effective at blocking traffic based on simple rules like IP address or request rate, but they are blind to the content of a request. Modern applications, especially those using downstream AI services, are vulnerable to sophisticated payload attacks like SQL injection, cross-site scripting (XSS), and prompt injection.
