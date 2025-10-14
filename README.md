@@ -55,6 +55,9 @@ define your own backend endpoint in .dev.vars first. The rest is taken care of i
 
 Replace https://ai-edge-firewall.your-username.workers.dev in the examples below with your actual deployed Worker URL.
 
+**Note**: To test the live demo instance for this repository, use the following URL:
+https://ai-edge-firewall.chakrabortyayush83.workers.dev
+
 
 ## Send a Safe Request
 This request has a harmless payload. The AI will approve it, and it will be silently forwarded to the backend. Nothing will appear on the dashboard.
