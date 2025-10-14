@@ -18,6 +18,7 @@
             --font-sans: 'Inter', system-ui, sans-serif;
             --font-mono: 'Fira Code', monospace;
         }
+
         body {
             font-family: var(--font-sans);
             background-color: var(--color-background);
@@ -25,290 +26,221 @@
             margin: 0;
             padding-bottom: 4rem; 
             line-height: 1.6;
-            background-image:
-                linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-                linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
-            background-size: 2.5rem 2.5rem;
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 1.5rem 1.5rem;
         }
-        h1, h2 {
-            font-weight: 700;
-        }
-        code {
-            font-family: var(--font-mono);
-            background-color: #f3f4f6;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-size: 0.875em;
-        }
-        .container {
-            max-width: 1024px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        header {
-            padding: 2rem 0;
-            margin-bottom: 2.5rem;
-        }
-        .header-main {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .header-logo {
-            width: 36px;
-            height: 36px;
-            color: var(--color-accent);
-        }
-        header h1 {
-            font-size: 1.75rem;
-            margin: 0;
-        }
-        header .accent {
-            color: var(--color-accent);
-            font-weight: 600;
-        }
+
+        h1, h2, h3 { font-weight: 700; }
+        code { font-family: var(--font-mono); background-color: #f3f4f6; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.875em; }
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 1.5rem; }
+        header { padding: 1.2rem 0; margin-bottom: 0rem; }
+        .header-main { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+        .header-logo { width: 36px; height: 36px; color: var(--color-accent); }
+        header h1 { font-size: 1.75rem; margin: 0; text-align: center; }
+        header .accent { color: var(--color-accent); font-weight: 600; }
+
         .endpoint-info {
-            margin-top: 1rem;
-            padding: 0.75rem 1rem;
+            margin-top: 0rem;
+            padding: 0rem 0.75rem;
             background-color: #f9fafb;
             border: 1px solid var(--color-border);
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--color-muted);
-            text-align: center;
-        }
-        .log-container {
-            background-color: var(--color-background);
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        }
-        .log-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 1.5rem;
-        }
-        .log-header h2 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-muted);
-        }
-        .status {
+            line-height: 1.7;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--color-muted);
+            gap: 2rem;
         }
-        .status-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--color-muted);
-            transition: background-color 0.3s ease;
-        }
-        .status-indicator.connected {
-            background-color: var(--color-status-connected);
-        }
-        .log-body {
-            padding: 1.5rem;
-            max-height: calc(100vh - 350px);
-            overflow-y: auto;
-        }
-        .log-entry {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 0.5rem 1.5rem;
-            padding: 1rem;
-            border-left: 4px solid var(--color-border);
-            margin-bottom: 1rem;
-            animation: fadeIn 0.5s ease-in-out;
-            align-items: center;
-        }
-        .log-entry:last-child {
-            margin-bottom: 0;
-        }
-        .log-entry.highlight-threat {
-            border-left-color: var(--color-accent);
-            background-color: rgba(249, 115, 22, 0.05);
-        }
-        .log-entry .timestamp {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--color-muted);
-        }
-        .log-meta {
-            display: flex;
-            align-items: center;
-            font-size: 0.875rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+
+        #system-design-image { flex-shrink: 0; }
+        #system-design-image img { height: 300px; object-fit: contain; display: block; margin: 1rem auto; border: 1px solid var(--color-accent); border-radius: 8px; cursor: pointer; }
+
+        .log-container { background-color: var(--color-background); border: 1px solid var(--color-border); border-radius: 4px; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); margin-top: 1.5rem; }
+        .log-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding: 1rem 1.5rem; }
+        .log-header h2 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); }
+        .status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--color-muted); }
+        .status-indicator { width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-muted); transition: background-color 0.3s ease; }
+        .status-indicator.connected { background-color: var(--color-status-connected); }
+
+        .log-column-headers { display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem 1.5rem; padding: 0.75rem 1.5rem; font-size: 0.75rem; font-weight: 600; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--color-border); }
+        .log-body { padding: 1.5rem; max-height: calc(100vh - 400px); overflow-y: auto; }
+        .log-entry { display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem 1.5rem; padding: 1rem; border-left: 4px solid var(--color-border); margin-bottom: 1rem; animation: fadeIn 0.5s ease-in-out; align-items: center; }
+        .log-entry:last-child { margin-bottom: 0; }
+        .log-entry.highlight-threat { border-left-color: var(--color-accent); background-color: rgba(249, 115, 22, 0.05); }
+        .log-entry .timestamp { font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-muted); }
+        .log-meta { display: flex; align-items: center; font-size: 0.875rem; flex-wrap: wrap; gap: 1rem; }
         .log-meta .ip { font-weight: 600; color: var(--color-foreground); }
-        .log-meta .country { font-size: 0.8rem; border: 1px solid var(--color-border); padding: 0.1rem 0.5rem; border-radius: 4px; background: #f9fafb;}
-        .log-payload {
-            grid-column: 2;
-            word-break: break-all;
-        }
-        .placeholder {
-            text-align: center;
-            color: var(--color-muted);
-            padding: 2rem 0;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
- 
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem 0;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.875rem;
-            color: var(--color-muted);
-        }
-        .footer-content a {
-            line-height: 0; 
-        }
-        .github-logo {
-            width: 20px;
-            height: 20px;
-            color: var(--color-foreground);
-            transition: color 0.2s ease-in-out;
-        }
-        .footer-content a:hover .github-logo {
-            color: var(--color-accent);
-        }
+        .log-meta .country { font-size: 0.8rem; border: 1px solid var(--color-border); padding: 0.1rem 0.5rem; border-radius: 4px; background: #f9fafb; }
+        .log-payload { grid-column: 2; word-break: break-all; }
+        .placeholder { text-align: center; color: var(--color-muted); padding: 2rem 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 1rem 0; }
+        .footer-content { position: fixed; bottom: 1rem; right: 1rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--color-muted); background: rgba(255, 255, 255, 0.9); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid var(--color-border); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+        .footer-content a { line-height: 0; }
+        .github-logo { width: 20px; height: 20px; color: var(--color-foreground); transition: color 0.2s ease-in-out; }
+        .footer-content a:hover .github-logo { color: var(--color-accent); }
+
+        /* Modal zoom */
+        #image-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0); display: none; align-items: center; justify-content: center; z-index: 1000; transition: background 0.4s ease-in-out; }
+        #image-overlay img { position: absolute; border: 2px solid var(--color-accent); border-radius: 8px; transform-origin: top left; transition: transform 0.4s ease-in-out; cursor: zoom-out; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="header-main">
-                <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                </svg>
-                <h1>AI Edge Firewall // <span class="accent">Live Threat Feed</span></h1>
+<header>
+    <div class="container">
+        <div class="header-main">
+            <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+            <h1>AI Edge Firewall // <span class="accent">Live Threat Feed</span></h1>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="endpoint-info">
+        <p>
+            This dashboard displays live data from an AI powered security gateway built on Cloudflare Workers. The Worker intercepts all API requests to a backend endpoint (in this case a mock endpoint generated by beeceptor), using Workers AI to analyze payloads for malicious content like SQL injection or XSS. An IP reputation system, built with Cloudflare KV, tracks offenders and issues temporary blocks after repeated violations. All security events are logged to a Cloudflare D1 database.
+        </p>
+        <div id="system-design-image"><img src="./image.png" alt="SYSTEM DESIGN IMAGE"></div>
+    </div>
+
+    <div class="log-container">
+        <div class="log-header">
+            <h2>Live Threat Log</h2>
+            <div class="status">
+                <span id="status-indicator" class="status-indicator"></span>
+                <span id="status-text">Connecting...</span>
             </div>
         </div>
-    </header>
-
-    <main class="container">
-        <div class="endpoint-info">
-            Protecting an endpoint generated by Beeceptor
+        <div class="log-column-headers">
+            <span>Time (UTC)</span>
+            <span>Threat Details</span>
         </div>
-
-        <div class="log-container" style="margin-top: 1.5rem;">
-            <div class="log-header">
-                <h2>Live Threat Log</h2>
-                <div class="status">
-                    <span id="status-indicator" class="status-indicator"></span>
-                    <span id="status-text">Connecting...</span>
-                </div>
-            </div>
-            <div class="log-body" id="threat-log-container">
-                <p class="placeholder" id="placeholder">Waiting for threat data...</p>
-            </div>
+        <div class="log-body" id="threat-log-container">
+            <p class="placeholder" id="placeholder">Waiting for threat data...</p>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer>
-        <div class="container footer-content">
-            <span>Built on Cloudflare Workers by Ayush Chakraborty</span>
-            <a href="https://github.com/AyushChakraborty/ai_edge_firewall" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="github-logo">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
-                </svg>
-            </a>
-        </div>
-    </footer>
+<footer>
+    <div class="container footer-content">
+        <span>Built on Cloudflare Workers by Ayush Chakraborty</span>
+        <a href="https://github.com/Ayush-Chakraborty/AI-Edge-Firewall" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="github-logo">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+            </svg>
+        </a>
+    </div>
+</footer>
 
-    <script>
-        const ANALYTICS_ENDPOINT = 'https://ai-edge-firewall.chakrabortyayush83.workers.dev/analytics';
+<!-- Image Overlay -->
+<div id="image-overlay">
+    <img src="" alt="SYSTEM DESIGN IMAGE">
+</div>
 
-        const logContainer = document.getElementById('threat-log-container');
-        const placeholder = document.getElementById('placeholder');
-        const statusIndicator = document.getElementById('status-indicator');
-        const statusText = document.getElementById('status-text');
-        
-        const displayedThreatIds = new Set();
+<script>
+    const ANALYTICS_ENDPOINT = 'https://ai-edge-firewall.chakrabortyayush83.workers.dev/analytics';
+    const logContainer = document.getElementById('threat-log-container');
+    const placeholder = document.getElementById('placeholder');
+    const statusIndicator = document.getElementById('status-indicator');
+    const statusText = document.getElementById('status-text');
+    const displayedThreatIds = new Set();
 
-        async function fetchThreats() {
-            try {
-                const response = await fetch(ANALYTICS_ENDPOINT);
-                if (!response.ok) {
-                    throw new Error(`API request failed: ${response.statusText}`);
+    async function fetchThreats() {
+        try {
+            const response = await fetch(ANALYTICS_ENDPOINT);
+            if (!response.ok) throw new Error(`API request failed: ${response.statusText}`);
+            const threats = await response.json();
+            
+            statusIndicator.classList.add('connected');
+            statusText.textContent = 'Live';
+
+            if (placeholder && threats.length > 0) placeholder.style.display = 'none';
+
+            threats.reverse().forEach(threat => {
+                if (!displayedThreatIds.has(threat.id)) {
+                    displayedThreatIds.add(threat.id);
+                    const threatElement = createThreatElement(threat);
+                    logContainer.prepend(threatElement);
                 }
-                const threats = await response.json();
-                
-                statusIndicator.classList.add('connected');
-                statusText.textContent = 'Live';
-
-                if (placeholder && threats.length > 0) {
-                    placeholder.style.display = 'none';
-                }
-
-                threats.reverse().forEach(threat => {
-                    if (!displayedThreatIds.has(threat.id)) {
-                        displayedThreatIds.add(threat.id);
-                        const threatElement = createThreatElement(threat);
-                        logContainer.prepend(threatElement);
-                    }
-                });
-
-            } catch (error) {
-                console.error("Failed to fetch threats:", error);
-                statusIndicator.classList.remove('connected');
-                statusText.textContent = 'Disconnected';
-                if (placeholder) {
-                    placeholder.textContent = "Error: Could not connect to API.";
-                }
-            }
-        }
-
-        function createThreatElement(threat) {
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            if (threat.payload_snippet === 'REPEATED_BLOCKED_ATTEMPT') {
-                entry.classList.add('highlight-threat');
-            }
-            const formattedTimestamp = new Date(threat.timestamp).toLocaleTimeString([], {
-                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
             });
-            entry.innerHTML = `
-                <div class="timestamp">${formattedTimestamp}</div>
-                <div class="log-meta">
-                    <span class="ip">${escapeHtml(threat.ip)}</span>
-                    <span class="country">${escapeHtml(threat.country)}</span>
-                </div>
-                <div class="log-payload">
-                    <code>${escapeHtml(threat.payload_snippet)}</code>
-                </div>
-            `;
-            return entry;
-        }
 
-        function escapeHtml(unsafe) {
-            if (typeof unsafe !== 'string') return '';
-            return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        } catch (error) {
+            console.error("Failed to fetch threats:", error);
+            statusIndicator.classList.remove('connected');
+            statusText.textContent = 'Disconnected';
+            if (placeholder) placeholder.textContent = "Error: Could not connect to API.";
         }
-        
-        setInterval(fetchThreats, 5000);
-        fetchThreats();
-    </script>
+    }
+
+    function createThreatElement(threat) {
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        if (threat.payload_snippet === 'REPEATED_BLOCKED_ATTEMPT') entry.classList.add('highlight-threat');
+        const formattedTimestamp = new Date(threat.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'UTC' });
+        entry.innerHTML = `
+            <div class="timestamp">${formattedTimestamp}</div>
+            <div class="log-meta">
+                <span class="ip">${escapeHtml(threat.ip)}</span>
+                <span class="country">${escapeHtml(threat.country)}</span>
+            </div>
+            <div class="log-payload">
+                <code>${escapeHtml(threat.payload_snippet)}</code>
+            </div>
+        `;
+        return entry;
+    }
+
+    function escapeHtml(unsafe) {
+        if (typeof unsafe !== 'string') return '';
+        return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+    
+    setInterval(fetchThreats, 5000);
+    fetchThreats();
+
+    // Modal zoom logic
+    const systemImage = document.querySelector('#system-design-image img');
+    const overlay = document.getElementById('image-overlay');
+    const overlayImage = overlay.querySelector('img');
+
+    systemImage.addEventListener('click', () => {
+        const rect = systemImage.getBoundingClientRect();
+        overlayImage.src = systemImage.src;
+        overlayImage.style.width = rect.width + 'px';
+        overlayImage.style.height = rect.height + 'px';
+        overlayImage.style.top = rect.top + 'px';
+        overlayImage.style.left = rect.left + 'px';
+        overlayImage.style.transform = 'translate(0,0) scale(1)';
+        overlay.style.display = 'flex';
+
+        requestAnimationFrame(() => {
+            const scaleX = window.innerWidth * 0.9 / rect.width;
+            const scaleY = window.innerHeight * 0.9 / rect.height;
+            const scale = Math.min(scaleX, scaleY);
+
+            const targetX = (window.innerWidth - rect.width * scale) / 2 - rect.left;
+            const targetY = (window.innerHeight - rect.height * scale) / 2 - rect.top;
+
+            overlay.style.background = 'rgba(0,0,0,0.8)';
+            overlayImage.style.transform = `translate(${targetX}px, ${targetY}px) scale(${scale})`;
+        });
+    });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.tagName === 'IMG') {
+            overlayImage.style.transform = 'translate(0,0) scale(1)';
+            overlay.style.background = 'rgba(0,0,0,0)';
+            overlayImage.addEventListener('transitionend', () => {
+                overlay.style.display = 'none';
+            }, { once: true });
+        }
+    });
+</script>
 </body>
 </html>
-
