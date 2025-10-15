@@ -51,10 +51,10 @@ The architecture is fully serverless, leveraging multiple services within the Cl
 
 To test the live firewall and see threats appear on your dashboard, you must send requests to the Worker URL, which acts as the gateway to the actual endpoint defined by you.
 
-For local development, define your own backend endpoint in .dev.vars first. The rest is taken care of in the worker code and replace https://ai-edge-firewall.your-username.workers.dev in the examples below with your actual deployed Worker URL.
-
 **Note**: To test the live demo instance for this repository, use the following URL for the below curl commands, this is enough for the dashboard to show the updates in real time, the other parts are for running it locally, which is not really needed:
 https://ai-edge-firewall.chakrabortyayush83.workers.dev
+
+For local development, define your own backend endpoint in .dev.vars first. The rest is taken care of in the worker code and replace https://ai-edge-firewall.your-username.workers.dev in the examples below with your actual deployed Worker URL.
 
 
 ## Send a Safe Request
@@ -78,6 +78,10 @@ curl -X POST \
 ```
 
 Send the malicious request multiple times to test the IP reputation system and see the REPEATED_BLOCKED_ATTEMPT logs appear.
+
+Example of what I did, you can try to send payloads too!
+<img width="1440" height="251" alt="image" src="https://github.com/user-attachments/assets/a79732ab-13a5-434d-843c-7602e2519fa8" />
+
 
 For local development, you will need two terminal windows to run the backend and frontend simultaneously.
 
